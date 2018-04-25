@@ -1,41 +1,67 @@
 .CodeMirror,
 .stdout {
-  font-family: "Operator Mono", Menlo, Monaco, "Lucida Console", monospace; }
+  font-family: "Operator Mono", Menlo, Monaco, "Lucida Console", monospace;
+}
 
 .sling-container {
   display: grid;
   height: 100%;
-  grid-template-areas: "header" "code1" "stdout" "code2"; }
-  @media (min-width: 768px) {
-    .sling-container {
-      grid-template-columns: 33% 33% 33%;
-      grid-template-areas: "header header header" "code1   stdout   code2"; } }
+  grid-template-areas: "header" "code1" "stdout" "code2";
+}
+@media (min-width: 768px) {
+  .sling-container {
+    grid-template-columns: 33% 33% 33%;
+    grid-template-areas: "header header header" "code1   stdout   code2";
+  }
+}
 
 .code1-editor-container {
   max-height: 100%;
-  background: #FFF;
+  background: #fff;
   overflow-y: scroll;
   cursor: text;
-  grid-area: code1; }
+  grid-area: code1;
+}
 
 .code2-editor-container {
   max-height: 100%;
-  background: #FFF;
+  background: #fff;
   overflow-y: scroll;
   cursor: text;
-  grid-area: code2; }
+  grid-area: code2;
+}
 
 .stdout-container {
-  grid-area: stdout; }
+  grid-area: stdout;
+}
 
 .editor-header {
-  grid-area: header; }
+  grid-area: header;
+}
 
 .run-btn {
-  margin: 30px; }
+  text-align: center;
+  margin-top: 30px;
+}
 
 .stdout {
   min-height: 100px;
   background: #141414;
   padding: 5px;
-  margin: 0 30px; }
+  margin: 0 30px;
+}
+
+.content {
+  font-size: 13px;
+  margin-bottom: 20px;
+  width: 70%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title {
+  text-align: center;
+  font-size: 25px;
+  margin-bottom: -20px;
+}

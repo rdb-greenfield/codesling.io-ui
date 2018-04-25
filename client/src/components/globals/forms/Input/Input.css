@@ -8,4 +8,49 @@ input[type="password"] {
   border-radius: 2px;
   display: block;
   padding: 12px 18px;
-  margin: 1em 0; }
+  margin: 1em 0;
+}
+
+input[type="description"] {
+  border: 0;
+  margin: 0;
+  width: 100%;
+  border-radius: 2px;
+  display: block;
+  padding: 12px 18px;
+  margin: 1em 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+input[type="difficulty"] {
+  border: 0;
+  margin: 0;
+  width: 100%;
+  border-radius: 2px;
+  display: block;
+  padding: 12px 18px;
+  margin: 1em 0;
+}
+
+input[type="title"] {
+  border: 0;
+  margin: 0;
+  width: 100%;
+  border-radius: 2px;
+  display: block;
+  padding: 12px 18px;
+  margin: 1em 0;
+}
+
+input[type="fn_name"] {
+  border: 0;
+  margin: 0;
+  width: 100%;
+  border-radius: 2px;
+  display: block;
+  padding: 12px 18px;
+  margin: 1em 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

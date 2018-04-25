@@ -1,19 +1,36 @@
 .auth-header {
   width: 100%;
-  padding: 50px 0; }
-  .auth-header .logo {
-    width: 300px;
-    display: block;
-    margin: auto; }
+  padding: 50px 0;
+}
+.auth-header .logo {
+  width: 300px;
+  display: block;
+  margin: auto;
+}
 
 .login-form-container,
 .signup-form-container {
-  width: 100%; }
+  width: 100%;
+}
 
 .auth-form {
   margin: auto;
   width: 100%;
-  max-width: 400px; }
+  max-width: 400px;
+}
 
 .auth-link {
-  margin-left: 5px; }
+  margin-left: 5px;
+}
+
+.testsInput {
+  border: 0;
+  margin: 0;
+  width: 100%;
+  border-radius: 2px;
+  display: block;
+  padding: 12px 18px;
+  margin: 1em 0;
+  font-size: 16px;
+  height: 120px;
+}

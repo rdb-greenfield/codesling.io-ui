@@ -1,18 +1,18 @@
-import React from 'react';
+import React from "react";
 
 // import Loading from '../../globals/Loading';
 
 const StdOut = ({ text }) => {
   return (
     <div>
-      Result
+      <span style={{ marginLeft: "10px" }}>Result:</span>
       <br />
-      {text.result}
+      <span style={{ marginLeft: "10px" }}>{text.result}</span>
       <br />
       <br />
-      Console
+      <span style={{ marginLeft: "10px" }}>Console:</span>
       <br />
-      {text.console}
+      <span style={{ marginLeft: "10px" }}>{text.console}</span>
     </div>
   );
 };
