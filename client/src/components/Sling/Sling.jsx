@@ -45,8 +45,6 @@ class Sling extends Component {
       ({ id, playerOneText, playerTwoText, challenge }) => {
         this.setState({
           id,
-          // ownerText: playerOneText,
-          // challengerText: playerTwoText,
           challenge
         });
       }
@@ -68,13 +66,20 @@ class Sling extends Component {
   }
 
   submitCode = () => {
-    console.log(this.state.ownerText);
     const { socket, player } = this.props;
     const { ownerText, challengerText } = this.state;
     if (player === 1) {
-      socket.emit("client.run", { text: ownerText, player });
+      socket.emit("client.run", {
+        text: ownerText,
+        player,
+        tests: JSON.parse(this.props.challenge).tests
+      });
     } else {
-      socket.emit("client.run", { text: challengerText, player });
+      socket.emit("client.run", {
+        text: challengerText,
+        player,
+        tests: JSON.parse(this.props.challenge).tests
+      });
     }
   };
 
@@ -102,7 +107,7 @@ class Sling extends Component {
     if (player === 1) {
       return (
         <div className="sling-container">
-          <EditorHeader />
+          <EditorHeader props={this.props.data} />
           <div className="code1-editor-container">
             <CodeMirror
               editorDidMount={this.initializeEditor}

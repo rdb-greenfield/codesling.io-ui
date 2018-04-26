@@ -1,12 +1,24 @@
 .landing-page-container {
-  text-align: center; }
+  text-align: center;
+}
 
 .landing-page-logo {
   width: 300px;
-  margin: 50px 0; }
+  margin: 50px 0;
+}
 
 .auth-btn-container button {
-  margin-bottom: 20px; }
-  @media (min-width: 480px) {
-    .auth-btn-container button {
-      min-width: 300px; } }
+  margin-bottom: 20px;
+}
+@media (min-width: 480px) {
+  .auth-btn-container button {
+    min-width: 300px;
+  }
+}
+
+.landing-page-container select {
+  background-color: #c04143;
+  color: white;
+  width: 11%;
+  height: 30px;
+}
