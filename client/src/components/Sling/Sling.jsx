@@ -72,13 +72,15 @@ class Sling extends Component {
       socket.emit("client.run", {
         text: ownerText,
         player,
-        tests: JSON.parse(this.props.challenge).tests
+        tests: JSON.parse(this.props.challenge).tests,
+        fnName: JSON.parse(this.props.challenge).fn_name
       });
     } else {
       socket.emit("client.run", {
         text: challengerText,
         player,
-        tests: JSON.parse(this.props.challenge).tests
+        tests: JSON.parse(this.props.challenge).tests,
+        fnName: JSON.parse(this.props.challenge).fn_name
       });
     }
   };
