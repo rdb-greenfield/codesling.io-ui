@@ -4,6 +4,7 @@ import axios from "axios";
 
 import Button from "../globals/Button";
 import Logo from "../globals/Logo";
+import EditorHeader from "../Sling/EditorHeader";
 
 import "./LandingPage.css";
 
@@ -47,9 +48,13 @@ class Home extends Component {
   render() {
     return (
       <div className="landing-page-container">
-        <Logo className="landing-page-logo" />
+        <EditorHeader props={this.props} />
         <br />
-        <select onChange={e => this.handleChallengeSelect(e)}>
+        <select
+          className="challenge-selector"
+          onChange={e => this.handleChallengeSelect(e)}
+        >
+          <option>Select a Challenge</option>
           {this.state.allChallenges.map(challenge => {
             return (
               <option key={challenge.id} value={JSON.stringify(challenge)}>
