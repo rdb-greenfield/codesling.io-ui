@@ -1,0 +1,34 @@
+.messages-container {
+  background-color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 100%;
+  height: 300px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: minmax(25px, 25px);
+  padding: 5px;
+  overflow: scroll;
+}
+.message-container {
+  display: block;
+}
+.my-message {
+  color: black;
+  font-size: 14px;
+  float: left;
+  background: lightskyblue;
+  border-radius: 50%;
+  padding: 3px 8px 3px 8px;
+  display: block;
+}
+.other-message {
+  color: black;
+  font-size: 14px;
+  float: right;
+  background: lightgray;
+  border-radius: 50%;
+  padding: 3px 15px 3px 15px;
+  display: block;
+}
