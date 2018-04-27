@@ -46,13 +46,12 @@ export default class WinnerPopup extends Component {
       challenger_id: parseInt(challenger),
       challenge_id: this.props.challenge.challenge_id
     };
-
-    console.log("body:", body);
-
-    const result = await axios.post(
-      "http://localhost:3396/api/history/addHistory",
-      body
-    );
+    if (challenger) {
+      const result = await axios.post(
+        "http://localhost:3396/api/history/addHistory",
+        body
+      );
+    }
     props.history.push("/home");
   }
 
