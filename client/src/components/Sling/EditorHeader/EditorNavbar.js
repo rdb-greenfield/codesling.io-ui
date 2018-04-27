@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 class EditorNavbar extends Component {
   handleChallengesClick() {
+    // need this to route to a challenges component
     console.log(this.props.props.history);
   }
   handleHistoryClick() {
@@ -17,7 +18,7 @@ class EditorNavbar extends Component {
     return (
       <nav className="editor-navbar">
         <ul>
-          <li onClick={() => this.handleChallengesClick()}>Challenges</li>
+          {/* <li onClick={() => this.handleChallengesClick()}>Challenges</li> */}
           <li onClick={() => this.handleHistoryClick()}>History</li>
           <li onClick={() => this.handleLogoutClick()}>Logout</li>
         </ul>

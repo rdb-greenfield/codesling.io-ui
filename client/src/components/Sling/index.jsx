@@ -5,7 +5,8 @@ import Sling from "./Sling.jsx";
 
 class SlingIndex extends Component {
   state = {
-    socket: null
+    socket: null,
+    challenge: ""
   };
 
   componentWillMount() {
@@ -15,7 +16,14 @@ class SlingIndex extends Component {
         player: this.props.location.state ? 1 : 2
       }
     });
-    this.setState({ socket: this.socket });
+    this.setState({
+      socket: this.socket
+    });
+    if (this.socket.query.player === 1) {
+      this.setState({
+        challenge: this.props.location.state.challenge
+      });
+    }
   }
 
   render() {
@@ -29,7 +37,14 @@ class SlingIndex extends Component {
         />
       );
     } else {
-      return <Sling socket={this.state.socket} challenge={{}} />;
+      return (
+        <Sling
+          data={this.props}
+          socket={this.state.socket}
+          challenge={{}}
+          player={this.socket.query.player}
+        />
+      );
     }
   }
 }

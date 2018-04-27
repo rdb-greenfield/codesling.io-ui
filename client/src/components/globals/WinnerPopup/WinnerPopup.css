@@ -1,0 +1,10 @@
+.winner-popup {
+  color: #c04143;
+  text-align: center;
+}
+
+.skylight-dialog {
+  min-height: 280px !important;
+  margin-left: -15.5% !important;
+  width: 30% !important;
+}
