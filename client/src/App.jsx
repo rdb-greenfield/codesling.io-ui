@@ -35,10 +35,7 @@ class App extends Component {
           />
           <Route path="/slinger" component={Slinger} />
           <Route path="/history" component={History} />
-          <Route
-            path="/:sling"
-            component={props => <Protected component={Sling} {...props} />}
-          />
+          <Route path="/:sling" component={Sling} props={this.props} />
           <Route path="/" component={LandingPage} />
         </Switch>
       </div>

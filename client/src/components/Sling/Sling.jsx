@@ -7,6 +7,7 @@ import { throttle } from "lodash";
 import Stdout from "./StdOut/index.jsx";
 import EditorHeader from "./EditorHeader";
 import Button from "../globals/Button";
+import WinnerPopup from "../globals/WinnerPopup";
 
 import "codemirror/mode/javascript/javascript.js";
 import "codemirror/lib/codemirror.css";
@@ -22,22 +23,20 @@ class Sling extends Component {
     challenge: "",
     stdout: "",
     player1Solution: "",
-    player2Solution: ""
+    player2Solution: "",
+    winnerMessage: ""
   };
 
   componentDidMount() {
     const { socket, challenge, player } = this.props;
-    let startingText = `function ${JSON.parse(challenge).fn_name}() {
-  //write code here;
-}`;
-    this.setState({
-      ownerText: startingText,
-      challengerText: startingText
-    });
     const startChall =
       typeof challenge === "string" ? JSON.parse(challenge) : {};
     socket.on("connect", () => {
-      socket.emit("client.ready", { challenge: startChall, player });
+      socket.emit("client.ready", {
+        challenge: startChall,
+        player,
+        playerID: localStorage.getItem("id")
+      });
     });
 
     socket.on(
@@ -47,9 +46,15 @@ class Sling extends Component {
           id,
           challenge
         });
+        let startingText = `function ${this.state.challenge.fn_name}() {
+  //write code here;
+}`;
+        this.setState({
+          ownerText: startingText,
+          challengerText: startingText
+        });
       }
     );
-
     socket.on("serverOne.changed", ({ text, player }) => {
       this.setState({ ownerText: text });
     });
@@ -60,8 +65,12 @@ class Sling extends Component {
 
     socket.on("server.run", ({ stdout, player }) => {
       this.props.player === player ? this.setState({ stdout }) : null;
+      if (stdout.result === "GAME OVER!") {
+        // run some function to show a pop up of winner and log history to db
+        let message = "Player " + player + " Wins!";
+        this.setState({ winnerMessage: message });
+      }
     });
-
     window.addEventListener("resize", this.setEditorSize);
   }
 
@@ -79,8 +88,8 @@ class Sling extends Component {
       socket.emit("client.run", {
         text: challengerText,
         player,
-        tests: JSON.parse(this.props.challenge).tests,
-        fnName: JSON.parse(this.props.challenge).fn_name
+        tests: this.state.challenge.tests,
+        fnName: this.state.challenge.fn_name
       });
     }
   };
@@ -130,7 +139,15 @@ class Sling extends Component {
             <div className="content">
               {this.state.challenge.content || this.props.challenge.content}
             </div>
+
             <Stdout text={this.state.stdout} />
+            {this.state.winnerMessage ? (
+              <WinnerPopup
+                message={this.state.winnerMessage}
+                data={this.props}
+                challenge={this.state.challenge}
+              />
+            ) : null}
             <Button
               className="run-btn"
               text="Run Code"
@@ -178,6 +195,13 @@ class Sling extends Component {
               {this.state.challenge.content || this.props.challenge.content}
             </div>
             <Stdout text={this.state.stdout} />
+            {this.state.winnerMessage ? (
+              <WinnerPopup
+                message={this.state.winnerMessage}
+                data={this.props}
+                challenge={this.state.challenge}
+              />
+            ) : null}
             <Button
               className="run-btn"
               text="Run Code"
