@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 
 class EditorNavbar extends Component {
-  handleChallengesClick() {
-    // need this to route to a challenges component
-    console.log(this.props.props.history);
+  handleHomeClick() {
+    this.props.props.history.push("/home");
   }
   handleHistoryClick() {
     this.props.props.history.push("/history");
@@ -18,7 +17,17 @@ class EditorNavbar extends Component {
     return (
       <nav className="editor-navbar">
         <ul>
-          {/* <li onClick={() => this.handleChallengesClick()}>Challenges</li> */}
+          <li className="attribute">
+            <span className="label">Clout: </span>
+            {"  "}
+            {localStorage.getItem("clout")}
+          </li>
+          <li className="attribute">
+            <span className="label">Win Ratio:</span>
+            {"  "}
+            {localStorage.getItem("kdr").slice(0, 4)}
+          </li>
+          <li onClick={() => this.handleHomeClick()}>Home</li>
           <li onClick={() => this.handleHistoryClick()}>History</li>
           <li onClick={() => this.handleLogoutClick()}>Logout</li>
         </ul>

@@ -49,3 +49,13 @@
   margin-left: 30px;
   cursor: pointer;
 }
+.attribute {
+  cursor: default !important;
+  font-family: fantasy;
+  color: #c24040;
+  font-size: 15px;
+}
+
+.label {
+  color: white !important;
+}

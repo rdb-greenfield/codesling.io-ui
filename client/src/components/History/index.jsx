@@ -19,7 +19,7 @@ class History extends Component {
   render() {
     return (
       <div>
-        <HistoryList history={this.state.history} />
+        <HistoryList history={this.state.history} data={this.props} />
       </div>
     );
   }

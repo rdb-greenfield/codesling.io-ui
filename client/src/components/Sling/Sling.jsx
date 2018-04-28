@@ -27,7 +27,7 @@ class Sling extends Component {
     winnerMessage: ""
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     const { socket, challenge, player } = this.props;
     const startChall =
       typeof challenge === "string" ? JSON.parse(challenge) : {};

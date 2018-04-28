@@ -34,6 +34,8 @@ export default class Login extends Component {
       localStorage.setItem("email", data.data.email);
       localStorage.setItem("id", data.data.id);
       localStorage.setItem("token", data.data.token.accessToken);
+      localStorage.setItem("kdr", data.data.kdr);
+      localStorage.setItem("clout", data.data.clout);
       data
         ? this.props.history.push("/home")
         : this.props.history.push("/login");
