@@ -46,11 +46,24 @@ export default class WinnerPopup extends Component {
       challenger_id: parseInt(challenger),
       challenge_id: this.props.challenge.challenge_id
     };
+
+    let cloutEarned = outcome === 1 ? this.props.challenge.difficulty : 0;
+
+    let body2 = {
+      id: parseInt(localStorage.getItem("id")),
+      clout: cloutEarned,
+      wins: outcome
+    };
     if (challenger) {
-      const result = await axios.post(
-        "http://localhost:3396/api/history/addHistory",
-        body
+      await axios.post("http://localhost:3396/api/history/addHistory", body);
+      // update clout and user table
+      await axios.post("http://localhost:3396/api/users/addGame", body2);
+      let data = await axios.get(
+        `http://localhost:3396/api/users/${localStorage.getItem("id")}`
       );
+      console.log(data);
+      localStorage.setItem("kdr", data.data[0].kdr);
+      localStorage.setItem("clout", data.data[0].clout);
     }
     props.history.push("/home");
   }
