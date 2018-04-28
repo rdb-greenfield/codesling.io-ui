@@ -73,12 +73,3 @@ export default class WinnerPopup extends Component {
 }
 
 WinnerPopup.displayName = "WinnerPopup";
-
-// export const addHistoryHelper = `
-//     INSERT INTO histories
-//       (outcome, time, clout, user_id, challenger_id, challenge_id)
-//     VALUES
-//       ($1, $2, $3, $4, $5, $6)
-//     RETURNING
-//       id, outcome, time, clout, user_id, challenger_id, challenge_id
-//   `;
