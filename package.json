@@ -24,6 +24,8 @@
   "homepage": "https://github.com/codesling/codesling.io-ui#readme",
   "dependencies": {
     "lodash": "^4.17.4",
+    "moment": "^2.22.1",
+    "moment-duration-format": "^2.2.2",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-popup": "^0.9.2",

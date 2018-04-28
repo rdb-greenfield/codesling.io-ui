@@ -7,6 +7,8 @@ import { throttle } from "lodash";
 import Stdout from "./StdOut/index.jsx";
 import EditorHeader from "./EditorHeader";
 import Button from "../globals/Button";
+import Timer from "../globals/Timer";
+import WaitingMessage from "../globals/WaitingMessage";
 import WinnerPopup from "../globals/WinnerPopup";
 import Input from "../globals/forms/Input";
 import Messages from "../globals/MessagesWindow";
@@ -27,10 +29,12 @@ class Sling extends Component {
     player2Solution: "",
     winnerMessage: "",
     messageDraft: "",
-    messages: []
+    messages: [],
+    startTimer: false,
+    showContent: "none"
   };
 
-  async componentDidMount() {
+  componentDidMount() {
     const { socket, challenge, player } = this.props;
     const startChall =
       typeof challenge === "string" ? JSON.parse(challenge) : {};
@@ -39,6 +43,13 @@ class Sling extends Component {
         challenge: startChall,
         player,
         playerID: localStorage.getItem("id")
+      });
+    });
+
+    socket.on("start.timer", ({ start }) => {
+      this.setState({
+        startTimer: start,
+        showContent: "inherit"
       });
     });
 
@@ -163,10 +174,18 @@ class Sling extends Component {
               {this.state.challenge.title || this.props.challenge.title}
             </div>
             <br />
-            <div className="content">
+
+            <div
+              className="content"
+              style={{ display: this.state.showContent }}
+            >
               {this.state.challenge.content || this.props.challenge.content}
             </div>
-
+            {this.state.startTimer ? (
+              <Timer start={Date.now()} />
+            ) : (
+              <WaitingMessage />
+            )}
             <Stdout text={this.state.stdout} />
             {this.state.winnerMessage ? (
               <WinnerPopup
@@ -222,7 +241,7 @@ class Sling extends Component {
     } else {
       return (
         <div className="sling-container">
-          <EditorHeader />
+          <EditorHeader props={this.props.data} />
           <div className="code1-editor-container">
             <CodeMirror
               editorDidMount={this.initializeEditor}
@@ -242,6 +261,9 @@ class Sling extends Component {
             <br />
             <div className="content">
               {this.state.challenge.content || this.props.challenge.content}
+            </div>
+            <div>
+              {this.state.startTimer ? <Timer start={Date.now()} /> : null}
             </div>
             <Stdout text={this.state.stdout} />
             {this.state.winnerMessage ? (
