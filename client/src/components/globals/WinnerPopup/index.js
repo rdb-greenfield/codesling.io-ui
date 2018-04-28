@@ -61,11 +61,13 @@ export default class WinnerPopup extends Component {
       let data = await axios.get(
         `http://localhost:3396/api/users/${localStorage.getItem("id")}`
       );
-      console.log(data);
       localStorage.setItem("kdr", data.data[0].kdr);
       localStorage.setItem("clout", data.data[0].clout);
     }
-    props.history.push("/home");
+    setTimeout(function() {
+      localStorage.setItem("time", 0);
+      props.history.push("/home");
+    }, 1000);
   }
 
   render() {
@@ -75,7 +77,7 @@ export default class WinnerPopup extends Component {
           afterClose={() => this.handleExit(this.props.data.data)}
           ref={ref => (this.dialogWithCallBacks = ref)}
           hideOnOverlayClicked
-          transitionDuration={3000}
+          transitionDuration={1000}
         >
           <h1 className="winner-popup">{this.props.message}</h1>
           <h2 className="winner-popup">Congrats!</h2>
