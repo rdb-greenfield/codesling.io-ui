@@ -8,6 +8,7 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: minmax(25px, 25px);
+  grid-gap: 5px;
   padding: 5px;
   overflow: scroll;
 }
@@ -15,20 +16,21 @@
   display: block;
 }
 .my-message {
-  color: black;
+  color: white;
   font-size: 14px;
   float: left;
-  background: lightskyblue;
-  border-radius: 50%;
-  padding: 3px 8px 3px 8px;
+  background: #c24040;
+  border-radius: 25px;
+  padding: 3px 10px;
   display: block;
+  position: relative;
 }
 .other-message {
   color: black;
   font-size: 14px;
   float: right;
-  background: lightgray;
-  border-radius: 50%;
-  padding: 3px 15px 3px 15px;
+  background: #eee;
+  border-radius: 25px;
+  padding: 3px 10px;
   display: block;
 }

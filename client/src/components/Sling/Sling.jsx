@@ -190,7 +190,7 @@ class Sling extends Component {
             <Button
               className="run-btn"
               text="Send Message"
-              backgroundColor="blue"
+              backgroundColor="red"
               color="white"
               onClick={() => this.sendMessage(1)}
             />
@@ -260,7 +260,7 @@ class Sling extends Component {
             <Button
               className="run-btn"
               text="Send Message"
-              backgroundColor="blue"
+              backgroundColor="red"
               color="white"
               onClick={() => this.sendMessage(2)}
             />
