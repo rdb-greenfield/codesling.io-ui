@@ -23,13 +23,13 @@ export default class Messages extends Component {
           const id = localStorage.getItem("id");
           if (message.sender_id == id) {
             return (
-              <div className="message-container">
+              <div className="message-container" key={message.id}>
                 <div className="my-message">{message.content}</div>{" "}
               </div>
             );
           } else {
             return (
-              <div className="message-container">
+              <div className="message-container" key={message.id}>
                 <div className="other-message">{message.content}</div>
               </div>
             );
