@@ -102,12 +102,16 @@ class Sling extends Component {
     }
   };
 
-  sendMessage = sender => {
+  sendMessage = (e, sender) => {
+    e.preventDefault();
     const { socket, player } = this.props;
     const { messageDraft } = this.state;
     socket.emit("client.message", {
       content: messageDraft,
       sender: sender
+    });
+    this.setState({
+      messageDraft: ""
     });
   };
 
@@ -183,8 +187,14 @@ class Sling extends Component {
               <Input
                 name="messageDraft"
                 type="messageDraft"
+                value={this.state.messageDraft}
                 placeholder={"Send Message"}
                 onChange={this.handleMessageEntry}
+                onKeyPress={event => {
+                  if (event.key === "Enter") {
+                    this.sendMessage(event, 1);
+                  }
+                }}
               />
             </div>
             <Button
@@ -192,7 +202,7 @@ class Sling extends Component {
               text="Send Message"
               backgroundColor="red"
               color="white"
-              onClick={() => this.sendMessage(1)}
+              onClick={e => this.sendMessage(e, 1)}
             />
           </div>
           <div className="code2-editor-container">
@@ -253,8 +263,16 @@ class Sling extends Component {
               <Input
                 name="messageDraft"
                 type="messageDraft"
+                value={this.state.messageDraft}
                 placeholder={"Send Message"}
-                onChange={this.handleMessageEntry}
+                onChange={e => {
+                  this.handleMessageEntry(e);
+                }}
+                onKeyPress={event => {
+                  if (event.key === "Enter") {
+                    this.sendMessage(event, 2);
+                  }
+                }}
               />
             </div>
             <Button
@@ -262,7 +280,7 @@ class Sling extends Component {
               text="Send Message"
               backgroundColor="red"
               color="white"
-              onClick={() => this.sendMessage(2)}
+              onClick={e => this.sendMessage(e, 2)}
             />
           </div>
           <div className="code2-editor-container">
