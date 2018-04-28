@@ -1,0 +1,36 @@
+.messages-container {
+  background-color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 100%;
+  height: 300px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: minmax(25px, 25px);
+  grid-gap: 5px;
+  padding: 5px;
+  overflow: scroll;
+}
+.message-container {
+  display: block;
+}
+.my-message {
+  color: white;
+  font-size: 14px;
+  float: left;
+  background: #c24040;
+  border-radius: 25px;
+  padding: 3px 10px;
+  display: block;
+  position: relative;
+}
+.other-message {
+  color: black;
+  font-size: 14px;
+  float: right;
+  background: #eee;
+  border-radius: 25px;
+  padding: 3px 10px;
+  display: block;
+}
